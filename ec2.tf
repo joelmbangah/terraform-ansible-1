@@ -9,12 +9,6 @@ resource "aws_instance" "myec2" {
     name = "testec2"
   }
 
-  provisioner "remote-exec" {
-  inline = [
-    "sudo mkdir -p /etc/ansible",
-  ]
-}
-
   provisioner "local-exec" {
     command = "echo ${aws_instance.myec2.public_ip} >> /etc/ansible/hosts"
   }
